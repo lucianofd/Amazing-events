@@ -1,93 +1,11 @@
+/** RECORRE ARRAY E IMPRIME TODOS LOS ELEMENTOS  --homee-- */
 
-
-/** RECORRE ARRAY E IMPRIME TODOS LOS ELEMENTOS UNO A ALA VEZ  --homee-- */
-
-/*
-for ( let i =0 ; i <= data.events.length;  i++ ){
-  console.log(data.events[i]);
-}
-
-*/
-
-/*dsitribuye EVENTOS ENTRE PROXIMO Y PASADO*/
-/*
-
-for (let i = 0; i < data.events.length; i++){  
-     
-  let base = data.currentDate;
-  let eventDate = data.events[i].date;
-if (base < eventDate) {
-    console.log(`${base} el evento con fecha: ${eventDate} es proximo`);
-}
-else if (base > eventDate) {
-    console.log(`${base} el evento con fecha: ${eventDate} es pasado`);
-}
-else {
-    console.log(`${base} el evento con fecha: ${eventDate} es hoy`);
-}
-
-}
-
-
-/*
-
-function pastEvents(data){
-  for (let i = 0; i <= datos.length; i++){
-    if (base > data.events.date) {
-      console.log(`${base} el evento con fecha: ${eventDate} es pasado`);
-  }
-  
-
-  }
-
-}
-*/
+// Crear las cards dinámicamente-----CREA PERO NO MODIFICA LAS EXISTENTES----
 
 //Acceso info eventos
 const datos = data.events;
-
-
-// Obtener contenedor de las cards
-
-/*
-// Cargar cards dinámicamente
-datos.forEach((item) => {
-  
-  //Captura el elemento card
-  const card = document.getElementById('card-ev');
-
-  // imagen de la card
-  const img = document.getElementById("img");
-  img.src = item.image;
-  img.alt = "Card image cap";
-  
-  // cuerpo de la card
-  const cardBody = document.getElementById("card-body");
- 
-  //  título de la card
-  const title = document.getElementById("title");
-  title.textContent = item.name;
- 
-
-  //  texto de la card
-  const text = document.getElementById("desc");
-  text.textContent = item.description;
-
-  //  precio de la card
-  const price = document.getElementById("price");
-  price.textContent = "Price: $" + item.price;
-  
-  //  botón de la card
-  const button = document.getElementsByClassName("btn btn-primary");
-  button.href = "Details.html";
-  button.textContent = "Saber Más!";
-
-});
-
-*/
-
 const fragment = document.createDocumentFragment();
-// Crear las cards dinámicamente-----CREA PERO NO MODIFICA LAS EXISTENTES----
+
 datos.forEach((item) => {
   // Crear card
   const card = document.createElement("div");
@@ -135,5 +53,49 @@ datos.forEach((item) => {
   // Añadir la card al contenedor
   fragment.appendChild(card);
 });
+
+//evitar reflow-- guardo la iteracion en fragment,(una vez finaliza iteracion)agrego al DOM.
 const cardsContainer = document.getElementById("main-h");
 cardsContainer.appendChild(fragment)
+/*-------------------------------------------------------------------------------------*/
+
+// MODELO MODIFICAR CONT DE CARD ESTATICA EXISTENTE.
+
+// Obtener contenedor de las cards
+
+/*
+// Cargar cards dinámicamente
+datos.forEach((item) => {
+  
+  //Captura el elemento card
+  const card = document.getElementById('card-ev');
+
+  // imagen de la card
+  const img = document.getElementById("img");
+  img.src = item.image;
+  img.alt = "Card image cap";
+  
+  // cuerpo de la card
+  const cardBody = document.getElementById("card-body");
+ 
+  //  título de la card
+  const title = document.getElementById("title");
+  title.textContent = item.name;
+ 
+
+  //  texto de la card
+  const text = document.getElementById("desc");
+  text.textContent = item.description;
+
+  //  precio de la card
+  const price = document.getElementById("price");
+  price.textContent = "Price: $" + item.price;
+  
+  //  botón de la card
+  const button = document.getElementsByClassName("btn btn-primary");
+  button.href = "Details.html";
+  button.textContent = "Saber Más!";
+
+});
+
+*/
