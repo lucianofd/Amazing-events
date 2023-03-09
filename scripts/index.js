@@ -1,12 +1,13 @@
 /** RECORRE ARRAY E IMPRIME TODOS LOS ELEMENTOS  --homee-- */
-
 // Crear las cards dinámicamente-----CREA PERO NO MODIFICA LAS EXISTENTES----
 
 //Acceso info eventos
 const datos = data.events;
+
+function crearCard(eventData){
 const fragment = document.createDocumentFragment();
 
-datos.forEach((item) => {
+eventData.forEach((item) => {
   // Crear card
   const card = document.createElement("div");
   card.classList.add("card");
@@ -42,7 +43,7 @@ datos.forEach((item) => {
 
   // Crear botón de la card
   const button = document.createElement("a");
-  button.href = "Details.html";
+  button.href = `details.html?id=${item._id}`;
   button.classList.add("btn", "btn-primary");
   button.textContent = "Saber Más!";
   cardBody.appendChild(button);
@@ -57,45 +58,117 @@ datos.forEach((item) => {
 //evitar reflow-- guardo la iteracion en fragment,(una vez finaliza iteracion)agrego al DOM.
 const cardsContainer = document.getElementById("main-h");
 cardsContainer.appendChild(fragment)
+
+}
+
+crearCard(datos);
 /*-------------------------------------------------------------------------------------*/
 
-// MODELO MODIFICAR CONT DE CARD ESTATICA EXISTENTE.
+const checkBoxes = document.querySelectorAll('input[type="checkBox"]') ;
+const searchTerm = document.querySelector('form[role="search"]');
 
-// Obtener contenedor de las cards
+/////------------------PROBANDO-----------------------
+function filterData() {
+  const cardsContainer = document.getElementById("main-h");
+ 
+  checkBoxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      filterEvent();
+    });
+  });
+  //obtener los valores seleccionados en los checkboxes
+  function getSelectedValues() {
+    return Array.from(checkBoxes)
+      .filter(checkbox => checkbox.checked)
+      .map(checkbox => checkbox.value.toLowerCase());
+  }
+
+  function filterEvent() {
+    const selectValue = getSelectedValues();
+    const searchInp = searchTerm.querySelector('input[type="search"]').value.toLowerCase();
+
+    let filteredData = data.events.filter(item => {
+      const categoryMatch = selectValue.length === 0 || selectValue.some(val => item.category.toLowerCase().includes(val));
+      const searchMatch = !searchInp || item.name.toLowerCase().includes(searchInp) || item.description.toLowerCase().includes(searchInp);
+      return categoryMatch && searchMatch;
+    });
+
+    if (filteredData.length > 0) {
+      while (cardsContainer.firstChild) {
+        cardsContainer.removeChild(cardsContainer.firstChild);
+      }
+      crearCard(filteredData);
+    } else {
+      window.alert("No hay elementos que coincidan. Intente otra búsqueda.");
+    }
+  }
+  // Asignar evento "submit" al formulario de búsqueda
+  searchTerm.addEventListener('submit', event => {
+    event.preventDefault();
+    filterEvent();
+  });
+  
+}
+
+filterData(datos);
 
 /*
-// Cargar cards dinámicamente
-datos.forEach((item) => {
+//mapea checkbox ,devuelve array con value de los seleccionados
+checkBoxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    // Obtener valores de los checkbox seleccionados
+    const selectValue = Array.from(checkBoxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
   
-  //Captura el elemento card
-  const card = document.getElementById('card-ev');
-
-  // imagen de la card
-  const img = document.getElementById("img");
-  img.src = item.image;
-  img.alt = "Card image cap";
-  
-  // cuerpo de la card
-  const cardBody = document.getElementById("card-body");
- 
-  //  título de la card
-  const title = document.getElementById("title");
-  title.textContent = item.name;
- 
-
-  //  texto de la card
-  const text = document.getElementById("desc");
-  text.textContent = item.description;
-
-  //  precio de la card
-  const price = document.getElementById("price");
-  price.textContent = "Price: $" + item.price;
-  
-  //  botón de la card
-  const button = document.getElementsByClassName("btn btn-primary");
-  button.href = "Details.html";
-  button.textContent = "Saber Más!";
-
+    // Actualizar los resultados
+     filterEvent(null,selectValue);
+   
+  });     
 });
 
+//valores de barra de busqueda
+searchTerm.addEventListener('submit', event => {
+  event.preventDefault();
+  //valor del término de búsqueda ingresado
+  const searchInp = searchTerm.querySelector('input[type="search"]').value.toLowerCase();
+  console.log(searchInp);
+  // Actualizar los resultados
+  filterEvent(searchInp);
+});
+
+function filterEvent(searchInp, selectValue) {
+  
+  let filteredEvent = datos.filter(
+    event =>
+    (!selectValue || selectValue.length === 0 || event.category.toLowerCase().includes(selectValue)) &&
+    (!searchInp || event.name.toLowerCase().includes(searchInp) || event.description.toLowerCase().includes(searchInp))
+  );
+
+  console.log('filtered events:', filteredEvent);
+  if(filteredEvent.length > 0){
+  const cardsContainer = document.getElementById("main-h");
+  while (cardsContainer.firstChild) {
+    cardsContainer.removeChild(cardsContainer.firstChild);
+  }
+  crearCard(filteredEvent)
+  }
+  else{
+  window.alert("No hay elementos que coincidan.Intente otra busqueda.")
+    
+  }
+} 
+
+*/
+/*
+//barra busqueda v2
+const d = document;
+function searchFilter(input, selector ){
+  d.addEventListener("keyup",(e)=>{
+    if(e.target.matches(input)){
+      console.log(e.key);
+      console.log(e.target.value);
+    }
+  })
+};
+
+searchFilter("d-flex", ".card");
 */

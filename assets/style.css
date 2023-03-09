@@ -57,20 +57,60 @@ footer {
   }
   
 /*----DETAIL---*/
-
-#det-img {
-    padding: inherit;
-} 
-
 #det-card {
     padding: 1%;
-    border: 1px solid black;
     margin: 1%;
+}
+#det-card-tx:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 #det-card-tx {
-  padding: inherit;  
+  padding: inherit; 
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-weight: bold;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out; 
 }
+
+#det-img {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out; 
+  border-radius: 2%;
+
+}
+
+#det-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+#det-card-tx a {
+  margin-top: 10px;
+}
+
+#det-card-tx .fa{
+  margin-right: 5px;
+}
+#det-card-tx .fa-map-marker-alt {
+  color: #d90368;
+}
+#det-card-tx .fa-calendar {
+  color: #d90368;
+}
+
+@media (max-width: 767px) {
+  .col-6 {
+    width: 100%;
+  }
+  #det-img {
+    margin-bottom: 1rem;
+  }
+}
+
 
 /*----CONTACT----*/
 .card-cont {
@@ -89,6 +129,8 @@ box-sizing: border-box;
 border: 2px solid #ccc;
 border-radius: 4px;
 }
+
+/*btn form contacto*/
 input[type=submit] {
 width: 30%;
 background-color:#d90368;
@@ -198,7 +240,7 @@ justify-content: center;
     font-size: 1.1rem;
     font-weight: bold;
   }
-  
+  /*btn cards*/
 .btn-primary {
     background-color: #d90368;
     border-color: #d90368;
@@ -229,6 +271,7 @@ justify-content: center;
     background-color: #e9ecef;
   }
   
+  /* btn search bar*/
   .btn-outline-success {
     color: #d90368;
     border-color:#d90368;
@@ -244,4 +287,10 @@ justify-content: center;
     background-color:#d90368;
     border-color: #d90368;
   }
+
+  /*
+  body {
+    overflow-x: hidden;
+  }
+  */
   
