@@ -113,52 +113,6 @@ function filterData() {
 filterData(datos);
 
 /*
-//mapea checkbox ,devuelve array con value de los seleccionados
-checkBoxes.forEach(checkbox => {
-  checkbox.addEventListener('change', () => {
-    // Obtener valores de los checkbox seleccionados
-    const selectValue = Array.from(checkBoxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-  
-    // Actualizar los resultados
-     filterEvent(null,selectValue);
-   
-  });     
-});
-
-//valores de barra de busqueda
-searchTerm.addEventListener('submit', event => {
-  event.preventDefault();
-  //valor del término de búsqueda ingresado
-  const searchInp = searchTerm.querySelector('input[type="search"]').value.toLowerCase();
-  console.log(searchInp);
-  // Actualizar los resultados
-  filterEvent(searchInp);
-});
-
-function filterEvent(searchInp, selectValue) {
-  
-  let filteredEvent = datos.filter(
-    event =>
-    (!selectValue || selectValue.length === 0 || event.category.toLowerCase().includes(selectValue)) &&
-    (!searchInp || event.name.toLowerCase().includes(searchInp) || event.description.toLowerCase().includes(searchInp))
-  );
-
-  console.log('filtered events:', filteredEvent);
-  if(filteredEvent.length > 0){
-  const cardsContainer = document.getElementById("main-h");
-  while (cardsContainer.firstChild) {
-    cardsContainer.removeChild(cardsContainer.firstChild);
-  }
-  crearCard(filteredEvent)
-  }
-  else{
-  window.alert("No hay elementos que coincidan.Intente otra busqueda.")
-    
-  }
-} 
-
-*/
-/*
 //barra busqueda v2
 const d = document;
 function searchFilter(input, selector ){
@@ -171,4 +125,13 @@ function searchFilter(input, selector ){
 };
 
 searchFilter("d-flex", ".card");
+*/
+/*
+- detalles
+-limpiar selectores al volver de detail/o volver a la seleccion
+-recargar ruta/filtro al limpiar barra search(el search recarda todo sobre la ruta en que este)
+-quitar srcoll lateral en vistas con card
+-ver footer de detail
+-reubicar btn volver en detail
+
 */
