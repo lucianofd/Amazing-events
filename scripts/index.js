@@ -1,13 +1,32 @@
 /** RECORRE ARRAY E IMPRIME TODOS LOS ELEMENTOS  --homee-- */
-// Crear las cards dinámicamente-----CREA PERO NO MODIFICA LAS EXISTENTES----
 
-//Acceso info eventos
-const datos = data.events;
+//Acceso info evento
+let urlApi = "https://mindhub-xj03.onrender.com/api/amazing"
+  
 
-function crearCard(eventData){
-const fragment = document.createDocumentFragment();
+ const datos = async ()=>{
+   
+  try{
+    const response = await fetch(urlApi)
+    const info = await response.json()
+    datosO = info.events;
+    console.log(datosO)
+    crearCard(datosO);
+    filterData(datosO)
+    
+  }
+  catch(error){
+    console.log(error);
+  }
 
-eventData.forEach((item) => {
+}
+
+
+
+const crearCard=(eventData)=>{
+  const fragment = document.createDocumentFragment();
+
+  eventData.forEach((item) => {
   // Crear card
   const card = document.createElement("div");
   card.classList.add("card");
@@ -59,17 +78,18 @@ eventData.forEach((item) => {
 const cardsContainer = document.getElementById("main-h");
 cardsContainer.appendChild(fragment)
 
-}
+ }
 
-crearCard(datos);
 /*-------------------------------------------------------------------------------------*/
 
-const checkBoxes = document.querySelectorAll('input[type="checkBox"]') ;
-const searchTerm = document.querySelector('form[role="search"]');
 
 /////------------------PROBANDO-----------------------
-function filterData() {
+const filterData =(eventData)=> {
   const cardsContainer = document.getElementById("main-h");
+  const checkBoxes = document.querySelectorAll('input[type="checkBox"]') ;
+  const searchTerm = document.querySelector('form[role="search"]');
+  
+
  
   checkBoxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
@@ -87,7 +107,7 @@ function filterData() {
     const selectValue = getSelectedValues();
     const searchInp = searchTerm.querySelector('input[type="search"]').value.toLowerCase();
 
-    let filteredData = data.events.filter(item => {
+    let filteredData = eventData.filter(item => {
       const categoryMatch = selectValue.length === 0 || selectValue.some(val => item.category.toLowerCase().includes(val));
       const searchMatch = !searchInp || item.name.toLowerCase().includes(searchInp) || item.description.toLowerCase().includes(searchInp);
       return categoryMatch && searchMatch;
@@ -110,7 +130,8 @@ function filterData() {
   
 }
 
-filterData(datos);
+datos();
+//filterData();
 
 /*
 //barra busqueda v2
