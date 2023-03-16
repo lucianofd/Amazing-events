@@ -83,7 +83,7 @@ cardsContainer.appendChild(fragment)
 /*-------------------------------------------------------------------------------------*/
 
 
-/////------------------PROBANDO-----------------------
+/////------------------filtros busqueda-----------------------
 const filterData =(eventData)=> {
   const cardsContainer = document.getElementById("main-h");
   const checkBoxes = document.querySelectorAll('input[type="checkBox"]') ;

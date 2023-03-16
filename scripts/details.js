@@ -1,16 +1,23 @@
-
-const datos = data.events;
-
+let urlApi = "https://mindhub-xj03.onrender.com/api/amazing"
+let datosObt = [];
+const datos = async ()=>{
+   try{
+     const response = await fetch(urlApi)
+     const info = await response.json()
+     datosObt = info.events;
+   }
+   catch(error){
+     console.log(error);
+   }
+ }
 const queryString = location.search;
-
 const params = new URLSearchParams(queryString);
-
 const id = params.get('id');
+const eventShow = (unEvento)=>{
 
-const unEvento = datos.find(e => e._id == id);
-console.log(unEvento);
-const div = document.querySelector('#det-card');
- div.innerHTML =`<div class=col-6>
+ const div = document.querySelector('#det-card');
+  if(unEvento){
+   const eventDetails = `<div class=col-6>
     <img id="det-img" src="${unEvento.image}" class="card-img-top" alt="...">
     </div>
     
@@ -26,7 +33,17 @@ const div = document.querySelector('#det-card');
     Event Place: ${unEvento.place}</p>
     </div>
     <a href="javascript:history.back(-1)"; title="volver" class="btn btn-primary">Volver</a>
-    </div>`
-  
+    </div>` ;
 
+    div.innerHTML = eventDetails;
+  } else {
+   div.innerHTML = `<p> Evento no encontrado</p>`
+   }
+} 
+
+// llamada datos asinc(aseguro q se cargue datosObt)
+datos().then(() => {
+  const unEvento = datosObt.find(e => e._id == id);
+  eventShow(unEvento);
+});
 
