@@ -1,6 +1,25 @@
-const datos = data.events;
-let base = data.currentDate;
-const comingEvents = datos.filter(event => event.date > base);
+let urlApi = "https://mindhub-xj03.onrender.com/api/amazing"
+  
+let datosO = []; 
+let comingEvents = [];
+
+async function datos() {
+  try {
+    const response = await fetch(urlApi)
+    const info = await response.json()
+    datosO = info.events;
+    let base = info.currentDate;
+    comingEvents = datosO.filter(event => event.date > base); 
+    crearCard(comingEvents);
+    filterData(comingEvents);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+datos(); 
+
+
 
 function crearCard(eventData){
   const fragment = document.createDocumentFragment();
@@ -107,4 +126,4 @@ function filterData(eventData) {
   
 }
 
-filterData(comingEvents);
+

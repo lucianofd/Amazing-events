@@ -23,7 +23,7 @@ let urlApi = "https://mindhub-xj03.onrender.com/api/amazing"
 
 
 
-const crearCard=(eventData)=>{
+const crearCard=(eventData)=>{ 
   const fragment = document.createDocumentFragment();
 
   eventData.forEach((item) => {

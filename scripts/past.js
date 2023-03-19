@@ -1,8 +1,30 @@
 //Acceso info eventos
-const datos = data.events;
-let base = data.currentDate;
+//const datos = data.events;
+//let base = data.currentDate;
 // filtra eventos pasados.
-const pastEvent = datos.filter(event => event.date < base);
+//const pastEvent = datos.filter(event => event.date < base);
+
+let urlApi = "https://mindhub-xj03.onrender.com/api/amazing"
+  
+let datosO = []; 
+let pastEvents = [];
+
+async function datos() {
+  try {
+    const response = await fetch(urlApi)
+    const info = await response.json()
+    datosO = info.events;
+    let base = info.currentDate;
+    pastEvents = datosO.filter(event => event.date < base); 
+    crearCard(pastEvents);
+    filterData(pastEvents);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+datos(); 
+
 
 const fragment = document.createDocumentFragment();
 
@@ -63,7 +85,7 @@ function crearCard(eventData){
   
   }
   
-  crearCard(pastEvent);
+
 
 const checkBoxes = document.querySelectorAll('input[type="checkBox"]') ;
 const searchTerm = document.querySelector('form[role="search"]');
@@ -111,7 +133,7 @@ function filterData(eventData) {
   
 }
 
-filterData(pastEvent);
+
 
 
 /*
