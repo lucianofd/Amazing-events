@@ -13,17 +13,17 @@ function searchFilter(input, selector ){
 
 --CORREGIR FILTRO SEARCH. -que recargue elementos al limpiar o si no hay resultados
 --Corregir distribucion de checkBox en pantalla pequena.
---Sacar search en bista movil
+--Sacar search en bista movil ~!
 ---ver footer de detail
 -reubicar btn volver en detail
 --COrregir estilo de TABLAS
---Corregir form en vista movil
+--Corregir form en vista movil ~!
 
 --REFACTORIZAR PETICIONES--- X ASYNC O POR FETCH. UNIFICAR CRITERIO
 
 
 
-// chequear elementos fuera de margen
+// chequear elementos fuera de margen ~!
 
 document
         .querySelectorAll("*")

@@ -21,9 +21,14 @@ footer {
     margin-top: 2%;
 }
 .text-right {
-    direction: rtl;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
 }
-
+footer div .col-6{
+  align-items: center;
+  display: inline-grid;
+}
 /*------Cards-----*/
 
 #main-h {
