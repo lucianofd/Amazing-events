@@ -83,7 +83,7 @@ function crearCard(eventData){
 const checkBoxes = document.querySelectorAll('input[type="checkBox"]') ;
 const searchTerm = document.querySelector('form[role="search"]');
 
-/////------------------PROBANDO-----------------------
+//---------------------------------
 function filterData(eventData) {
   const cardsContainer = document.getElementById("main-h");
  

@@ -142,6 +142,12 @@ border-radius: 4px;
 display: flex;
 justify-content: center;
 }
+@media screen and (max-width: 600px) {
+  .card-cont {
+      width: auto;
+      
+  }
+  } 
 
 @media screen and (max-width: 600px) {
 .card {
@@ -287,10 +293,15 @@ justify-content: center;
     background-color:#d90368;
     border-color: #d90368;
   }
-
-  /*
-  body {
-    overflow-x: hidden;
-  }
-  */
+  /*corrige scroll lateral*/
+  .row {
+    --bs-gutter-x: 0;}
+   /*oculta search en mov*/ 
+   @media screen and (max-width: 767px) {
+    .d-flex {
+      display: none !important;
+      
+  } 
+  }   
+  
   

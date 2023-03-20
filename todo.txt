@@ -1,0 +1,36 @@
+/* ---PENDIENTE
+
+//barra busqueda v2---busqueda estatica-- esconder elementos
+const d = document;
+function searchFilter(input, selector ){
+  d.addEventListener("keyup",(e)=>{
+    if(e.target.matches(input)){
+      console.log(e.key);
+      console.log(e.target.value);
+    }
+  })
+};
+
+--CORREGIR FILTRO SEARCH. -que recargue elementos al limpiar o si no hay resultados
+--Corregir distribucion de checkBox en pantalla pequena.
+--Sacar search en bista movil
+---ver footer de detail
+-reubicar btn volver en detail
+--COrregir estilo de TABLAS
+--Corregir form en vista movil
+
+--REFACTORIZAR PETICIONES--- X ASYNC O POR FETCH. UNIFICAR CRITERIO
+
+
+
+// chequear elementos fuera de margen
+
+document
+        .querySelectorAll("*")
+        forEach(el =>{
+          const {offsetWidth} = document.documentElement
+          if(el.offsetWidth > offsetWidth){
+            console.log(el);
+          }
+        })
+

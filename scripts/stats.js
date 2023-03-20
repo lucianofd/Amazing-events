@@ -69,7 +69,7 @@ const eventStatistics =(eventData)=> {
         contGeneral.innerHTML += elementoHTML;
       }
 
-    //TABLA UPCOMING EV
+    //TABLA UPCOMing y PAST
     function revenuePast(array, container) {
         const { sumByCategory, promByCategory, percentByCategory } = promedioProd(array, 'assistance', 'price');
         const contData = document.getElementById(container);
@@ -89,9 +89,7 @@ const eventStatistics =(eventData)=> {
     };
 
     revenuePast(percentAssist, 't-past');
-    revenuePast(estimateAssist, 't-upcoming')
-      
-      
+    revenuePast(estimateAssist, 't-upcoming')     
       
 }
 

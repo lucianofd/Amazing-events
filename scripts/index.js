@@ -21,8 +21,6 @@ let urlApi = "https://mindhub-xj03.onrender.com/api/amazing"
 
 }
 
-
-
 const crearCard=(eventData)=>{ 
   const fragment = document.createDocumentFragment();
 
@@ -131,28 +129,3 @@ const filterData =(eventData)=> {
 }
 
 datos();
-//filterData();
-
-/*
-//barra busqueda v2
-const d = document;
-function searchFilter(input, selector ){
-  d.addEventListener("keyup",(e)=>{
-    if(e.target.matches(input)){
-      console.log(e.key);
-      console.log(e.target.value);
-    }
-  })
-};
-
-searchFilter("d-flex", ".card");
-*/
-/*
-- detalles
--limpiar selectores al volver de detail/o volver a la seleccion
--recargar ruta/filtro al limpiar barra search(el search recarda todo sobre la ruta en que este)
--quitar srcoll lateral en vistas con card
--ver footer de detail
--reubicar btn volver en detail
-
-*/
